@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SC対策</title>
+<style>
+  :root {
+    color-scheme: light;
+    --surface-0: #f6f5f2; --surface-1: #ffffff; --surface-2: #eeece6;
+    --border: #ddd9d0; --text-primary: #17191c; --text-secondary: #5b5f5a; --text-muted: #8b8d86;
+    --accent: #2a5ea6; --accent-soft: #d9e6f5;
+    --font-display: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Noto Sans JP", system-ui, sans-serif;
+    --font-body: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Noto Sans JP", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --surface-0: #131417; --surface-1: #1b1d21; --surface-2: #24262b;
+      --border: #34373d; --text-primary: #f2f2f0; --text-secondary: #b7bab5; --text-muted: #83867f;
+      --accent: #6fa3e0; --accent-soft: #23364d;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--surface-0); color: var(--text-primary); font-family: var(--font-body); line-height: 1.7; }
+  .page { max-width: 640px; margin: 0 auto; padding: 60px 20px 100px; }
+  .kicker { font-size: 12.5px; letter-spacing: 0.14em; color: var(--text-muted); font-weight: 600; margin: 0 0 8px; }
+  h1 { font-family: var(--font-display); font-size: clamp(24px, 5vw, 32px); font-weight: 800; margin: 0 0 8px; }
+  .subtitle { color: var(--text-secondary); font-size: 14.5px; margin: 0 0 36px; }
+  .card-link {
+    display: block; background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px;
+    padding: 22px 24px; margin-bottom: 16px; text-decoration: none; color: inherit;
+  }
+  .card-link:hover { border-color: var(--accent); }
+  .card-link .label { font-size: 12px; font-weight: 700; color: var(--accent); letter-spacing: 0.05em; margin-bottom: 6px; }
+  .card-link .title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .card-link .desc { font-size: 13.5px; color: var(--text-secondary); }
+</style>
+</head>
+<body>
+<div class="page">
+  <p class="kicker">情報処理安全確保支援士（SC）対策</p>
+  <h1>過去問分析・学習戦略・教材</h1>
+  <p class="subtitle">午前I・午前II・午後、それぞれ分析→戦略→教材をまとめたページ。</p>
+
+  <a class="card-link" href="sc_am_all.html">
+    <div class="label">午前 I・II</div>
+    <div class="title">分析 / 戦略 / 学習順序 / 教材</div>
+    <div class="desc">10年分1,045問の重複分析、最短合格戦略、学習ロードマップ、暗記カード・計算ドリル・模擬試験。</div>
+  </a>
+
+  <a class="card-link" href="sc_pm_all.html">
+    <div class="label">午後</div>
+    <div class="title">分析 / 戦略 / 教材</div>
+    <div class="desc">23回分110問の記述式問題を分析。書き方の型トレーニング・問題演習・模擬試験（自己採点）。</div>
+  </a>
+</div>
+</body>
+</html>
