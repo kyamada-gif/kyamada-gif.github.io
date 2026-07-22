@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SC対策 事前学習</title>
+<style>
+  :root {
+    color-scheme: light;
+    --surface-0: #f6f5f2; --surface-1: #ffffff; --surface-2: #eeece6;
+    --border: #ddd9d0; --text-primary: #17191c; --text-secondary: #5b5f5a; --text-muted: #8b8d86;
+    --accent: #2a5ea6; --accent-soft: #d9e6f5;
+    --font-display: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Noto Sans JP", system-ui, sans-serif;
+    --font-body: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Noto Sans JP", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --surface-0: #131417; --surface-1: #1b1d21; --surface-2: #24262b;
+      --border: #34373d; --text-primary: #f2f2f0; --text-secondary: #b7bab5; --text-muted: #83867f;
+      --accent: #6fa3e0; --accent-soft: #23364d;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --surface-0: #131417; --surface-1: #1b1d21; --surface-2: #24262b;
+    --border: #34373d; --text-primary: #f2f2f0; --text-secondary: #b7bab5; --text-muted: #83867f;
+    --accent: #6fa3e0; --accent-soft: #23364d;
+  }
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --surface-0: #f6f5f2; --surface-1: #ffffff; --surface-2: #eeece6;
+    --border: #ddd9d0; --text-primary: #17191c; --text-secondary: #5b5f5a; --text-muted: #8b8d86;
+    --accent: #2a5ea6; --accent-soft: #d9e6f5;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--surface-0); color: var(--text-primary); font-family: var(--font-body); line-height: 1.75; -webkit-font-smoothing: antialiased; }
+  .page { max-width: 680px; margin: 0 auto; padding: 48px 20px 100px; }
+  @media (min-width: 640px) { .page { padding: 64px 28px 120px; } }
+  .kicker { font-size: 12.5px; letter-spacing: 0.14em; color: var(--text-muted); font-weight: 600; margin: 0 0 10px; }
+  h1 { font-family: var(--font-display); font-size: clamp(24px, 5vw, 32px); font-weight: 800; letter-spacing: -0.01em; margin: 0 0 10px; text-wrap: balance; }
+  .subtitle { color: var(--text-secondary); font-size: 15px; margin: 0 0 32px; }
+
+  .thesis { background: var(--surface-1); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 10px; padding: 20px 22px; margin: 0 0 32px; }
+  .thesis .label { font-size: 12px; letter-spacing: 0.1em; color: var(--accent); font-weight: 700; margin: 0 0 8px; }
+  .thesis p { margin: 0; font-size: 15px; line-height: 1.7; }
+  .thesis p + p { margin-top: 8px; font-size: 13.5px; color: var(--text-secondary); }
+
+  section { margin: 0 0 40px; }
+  h2 { font-family: var(--font-display); font-size: 17px; font-weight: 700; margin: 0 0 12px; }
+
+  .checklist { display: flex; flex-direction: column; gap: 10px; }
+  .check-item { display: flex; align-items: flex-start; gap: 12px; background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+  .check-item input[type="checkbox"] { margin-top: 3px; width: 18px; height: 18px; flex-shrink: 0; accent-color: #2f7d4f; cursor: pointer; }
+  .check-item label { font-size: 14px; line-height: 1.6; cursor: pointer; }
+  .check-item label b { display: block; margin-bottom: 2px; }
+  .check-item label span { color: var(--text-secondary); font-size: 13px; }
+  .check-progress { font-size: 12.5px; color: var(--text-muted); margin-top: 10px; }
+
+  .channel-link {
+    display: flex; align-items: center; gap: 14px; background: var(--surface-1); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px 18px; margin-bottom: 12px; text-decoration: none; color: inherit;
+  }
+  .channel-link:hover { border-color: var(--accent); }
+  .channel-link .icon { flex-shrink: 0; width: 40px; height: 40px; border-radius: 10px; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; }
+  .channel-link .name { font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+  .channel-link .note { font-size: 12.5px; color: var(--text-secondary); }
+
+  .next-link { display: block; text-align: center; background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-decoration: none; color: inherit; font-weight: 700; }
+  .next-link:hover { border-color: var(--accent); }
+  .footnote { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="page">
+  <p class="kicker">情報処理安全確保支援士（SC）対策 · 事前学習</p>
+  <h1>まず、ふわっと全体像をつかむ</h1>
+  <p class="subtitle">午前・午後の対策に入る前に、5時間くらいで「セキュリティ試験に何が出るか」の地図を頭に作る段階。</p>
+
+  <div class="thesis">
+    <p class="label">この段階の目的</p>
+    <p>いきなり過去問を解き始めると、知らない用語が出るたびに止まってしまう。先に全体の地図を作っておけば、午前・午後の学習が「知らない話」ではなく「聞いたことがある話の続き」になり、進みが速くなる。</p>
+    <p>だから、ここでは正確に覚えることより「聞いたことがある」状態を作ることを優先する。</p>
+  </div>
+
+  <section>
+    <h2>ゴールの基準</h2>
+    <div class="checklist" id="checklist">
+      <div class="check-item">
+        <input type="checkbox" id="c1" data-key="c1">
+        <label for="c1"><b>単語を聞いたら、どの分野の話かすぐ分かる</b><span>例：「DNSSEC」と聞いて、それが通信の話かパスワードの話かがすぐ分かる。意味を完全に説明できなくてよい。</span></label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="c2" data-key="c2">
+        <label for="c2"><b>試験全体の構成が分かる</b><span>午前I・午前II・午後で、それぞれ何が問われるかを人に説明できる。</span></label>
+      </div>
+      <div class="check-item">
+        <input type="checkbox" id="c3" data-key="c3">
+        <label for="c3"><b>2つのチャンネルの動画をひととおり見た</b><span>下のリンクから、それぞれの概要・基礎解説にひととおり目を通した。</span></label>
+      </div>
+    </div>
+    <p class="check-progress" id="check-progress"></p>
+  </section>
+
+  <section>
+    <h2>使う教材</h2>
+    <a class="channel-link" href="https://www.youtube.com/@masaru-study/videos" target="_blank" rel="noopener">
+      <div class="icon">ま</div>
+      <div>
+        <div class="name">まさる</div>
+        <div class="note">youtube.com/@masaru-study</div>
+      </div>
+    </a>
+    <a class="channel-link" href="https://www.youtube.com/@toppakou" target="_blank" rel="noopener">
+      <div class="icon">突</div>
+      <div>
+        <div class="name">情報処理技術者試験・高校情報教科対策の突破口ドットコム</div>
+        <div class="note">youtube.com/@toppakou</div>
+      </div>
+    </a>
+  </section>
+
+  <a class="next-link" href="../am/">上の基準まで来たら → 午前I・IIの対策へ ▶</a>
+
+  <p class="footnote">チェックの状態はこの端末のブラウザにのみ保存される。ここは自己申告の目安であり、正誤判定は行わない。</p>
+</div>
+<script>
+(function() {
+  var KEY = 'sc_pre_study_checklist_v1';
+  var checks = document.querySelectorAll('#checklist input[type="checkbox"]');
+  var progressEl = document.getElementById('check-progress');
+  function load() {
+    try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { return {}; }
+  }
+  function save(state) {
+    localStorage.setItem(KEY, JSON.stringify(state));
+  }
+  function renderProgress() {
+    var total = checks.length;
+    var done = Array.prototype.filter.call(checks, function(c) { return c.checked; }).length;
+    progressEl.textContent = done + '/' + total + '件チェック済み';
+  }
+  var state = load();
+  checks.forEach(function(c) {
+    c.checked = !!state[c.dataset.key];
+    c.addEventListener('change', function() {
+      var s = load();
+      s[c.dataset.key] = c.checked;
+      save(s);
+      renderProgress();
+    });
+  });
+  renderProgress();
+})();
+</script>
+</body>
+</html>
